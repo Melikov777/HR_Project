@@ -9,4 +9,7 @@ public interface IEmployeeService
     void Delete(Guid id);
     List<Employee> GetAll();
     Employee GetById(Guid id);
+    List<Employee> GetByDepartment(string departmentName);
+    List<Employee> GetByPosition(string positionName);
+    List<Employee> SearchByName(string name);
 }

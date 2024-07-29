@@ -66,9 +66,39 @@ public class EmployeeService : IEmployeeService
         return _employees;
     }
 
+    public List<Employee> GetByDepartment(string departmentName)
+    {
+        var employee = _employees.FindAll(d => d.Name == departmentName);
+        if (employee is null)
+        {
+            throw new NotFoundException("This employee doesn't exist");
+        }
+        return employee;
+    }
+
     public Employee GetById(Guid id)
     {
         var employee = _employees.Find(d => d.Id == id);
+        if (employee is null)
+        {
+            throw new NotFoundException("This employee doesn't exist");
+        }
+        return employee;
+    }
+
+    public List<Employee> GetByPosition(string positionName)
+    {
+        var employee = _employees.FindAll(d => d.Name == positionName);
+        if(employee is null)
+        {
+            throw new NotFoundException("This employee doesn't exist");
+        }
+        return employee;
+    }
+
+    public List<Employee> SearchByName(string name)
+    {
+        var employee = _employees.FindAll(d=> d.Name == name);
         if (employee is null)
         {
             throw new NotFoundException("This employee doesn't exist");
@@ -120,5 +150,6 @@ public class EmployeeService : IEmployeeService
         employee.Name = name;
         employee.LastName = lastname;
         employee.DepartmentId = departmentId;
+        employee.PositionId = positionId;
     }
 }
