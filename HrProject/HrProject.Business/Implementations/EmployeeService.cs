@@ -120,6 +120,5 @@ public class EmployeeService : IEmployeeService
         employee.Name = name;
         employee.LastName = lastname;
         employee.DepartmentId = departmentId;
-        employee.PositionId = positionId;
     }
 }
